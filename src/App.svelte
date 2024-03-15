@@ -23,7 +23,7 @@
         my = event.clientY;
     }
 
-    function getArrowPosition(i, j) {
+    function getArrowPosition(i: number, j: number) {
         return {
             x: j * (arrowWidth + gap) + arrowWidth / 2,
             y: i * (arrowHeight + gap) + arrowHeight / 2
@@ -44,6 +44,12 @@
             </div>
         {/each}
     </div>
+	<div class="banner-content">
+		<div class="banner-content-inner">
+			<h1>Hi! 👋</h1>
+		</div>
+		
+	</div>
 </main>
 <style>
 .homeBanner {
@@ -60,7 +66,19 @@
 }
 .arrow {
 	font-size: 180px;
-	color: gray;
+	color: rgba(255, 255, 255, 0.2);
 	user-select: none;
+}
+.banner-content {
+	position: absolute;
+	top: 50%;
+	display: flex;
+	text-align: center;
+	color: white;
+	width:100%;
+}
+.banner-content-inner {
+	width: 100%;
+	text-align: center;
 }
 </style>
