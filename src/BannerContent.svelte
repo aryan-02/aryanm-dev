@@ -17,7 +17,7 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
             <a href="https://github.com/aryan-02" target="_blank">
                 <i><Fa icon={faGithub} scale={3} /></i><!--GitHub-->
             </a>
-            <a href="/resume.pdf">
+            <a href="aryanm-dev/resume.pdf">
                 <i><Fa icon={faFilePdf} scale={3} /></i><!--Résumé-->
             </a>
         </div>
