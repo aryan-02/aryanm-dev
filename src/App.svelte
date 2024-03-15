@@ -1,47 +1,66 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+    const rows=5;
+    const cols=9;
+
+    let mx = 0;
+    let my = 0;
+
+    $: mousepos = "" + mx + "     " + my
+
+    let windowWidth = 0;
+    let windowHeight = 0;
+
+    // $: windowCenterX = windowWidth / 2;
+    // $: windowCenterY = windowHeight / 2;
+
+    $: arrowWidth = windowWidth / cols;
+    $: arrowHeight = windowHeight / rows;
+    $: gap = Math.min(arrowWidth, arrowHeight) * 0.1; // 10% of the smaller dimension
+
+    function handleMouseMove(event: any)
+    {
+        mx = event.clientX;
+        my = event.clientY;
+    }
+
+    function getArrowPosition(i, j) {
+        return {
+            x: j * (arrowWidth + gap) + arrowWidth / 2,
+            y: i * (arrowHeight + gap) + arrowHeight / 2
+        };
+    }
+
 </script>
 
+<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:mousemove={handleMouseMove} />
+
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+    <div role="banner" class="homeBanner">
+        {#each Array(rows) as _, i}
+            <div class="row">
+                {#each Array(cols) as _, j}
+                    <span class="material-symbols-outlined arrow" style="transform: rotate({Math.atan2((my - getArrowPosition(i, j).y), (mx - getArrowPosition(i, j).x))}rad) scaleX({1 + Math.sqrt(Math.pow((my - getArrowPosition(i, j).y), 2) + Math.pow(mx - getArrowPosition(i, j).x, 2)) / 3000})">arrow_right_alt</span>
+                {/each}
+            </div>
+        {/each}
+    </div>
 </main>
-
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+.homeBanner {
+	background: black;
+	color: white;
+	width: 100%;
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+}
+.row {
+	display: flex;
+	justify-content: space-evenly;
+}
+.arrow {
+	font-size: 180px;
+	color: gray;
+	user-select: none;
+}
 </style>
