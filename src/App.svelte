@@ -1,35 +1,24 @@
 <script lang="ts">
+    import BannerContent from "./BannerContent.svelte";
+
+    
+
     const rows=5;
     const cols=9;
 
     let mx = 0;
     let my = 0;
 
-    $: mousepos = "" + mx + "     " + my
-
     let windowWidth = 0;
     let windowHeight = 0;
 
-    // $: windowCenterX = windowWidth / 2;
-    // $: windowCenterY = windowHeight / 2;
-
-    $: arrowWidth = windowWidth / cols;
-    $: arrowHeight = windowHeight / rows;
-    $: gap = Math.min(arrowWidth, arrowHeight) * 0.1; // 10% of the smaller dimension
+	let arrows = Array(rows).fill().map(() => Array(cols).fill());
 
     function handleMouseMove(event: any)
     {
         mx = event.clientX;
         my = event.clientY;
     }
-
-    function getArrowPosition(i: number, j: number) {
-        return {
-            x: j * (arrowWidth + gap) + arrowWidth / 2,
-            y: i * (arrowHeight + gap) + arrowHeight / 2
-        };
-    }
-
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:mousemove={handleMouseMove} />
@@ -39,21 +28,19 @@
         {#each Array(rows) as _, i}
             <div class="row">
                 {#each Array(cols) as _, j}
-                    <span class="material-symbols-outlined arrow" style="transform: rotate({Math.atan2((my - getArrowPosition(i, j).y), (mx - getArrowPosition(i, j).x))}rad) scaleX({1 + Math.sqrt(Math.pow((my - getArrowPosition(i, j).y), 2) + Math.pow(mx - getArrowPosition(i, j).x, 2)) / 3000})">arrow_right_alt</span>
+				<span bind:this={arrows[i][j]} class="material-symbols-outlined arrow" style="transform: rotate({Math.atan2((my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2)), (mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)))}rad) scaleX({1 + Math.hypot(my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2), mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)) / 4000});">remove</span>
                 {/each}
             </div>
         {/each}
     </div>
-	<div class="banner-content">
-		<div class="banner-content-inner">
-			<h1>Hi! 👋</h1>
-		</div>
-		
-	</div>
+	<BannerContent />
+	<h2>Hello World</h2>
+	
 </main>
+
 <style>
 .homeBanner {
-	background: black;
+	background: #262A33;
 	color: white;
 	width: 100%;
 	height: 100vh;
@@ -68,17 +55,5 @@
 	font-size: 180px;
 	color: rgba(255, 255, 255, 0.2);
 	user-select: none;
-}
-.banner-content {
-	position: absolute;
-	top: 50%;
-	display: flex;
-	text-align: center;
-	color: white;
-	width:100%;
-}
-.banner-content-inner {
-	width: 100%;
-	text-align: center;
 }
 </style>
