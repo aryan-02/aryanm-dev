@@ -3,10 +3,12 @@ import profile from './assets/profile.jpg'
 import Fa from 'svelte-fa'
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+export let color = "white";
+export let iconColor = "#aaa";
 
 </script>
 
-<div class="banner-content">
+<div class="banner-content" style="color: {color}; --color: {color}; --iconColor: {iconColor}">
     <div class="banner-content-inner">
         <img class="profile-image" src={profile} alt="Aryan">
         <h1>Aryan Mediratta</h1>
@@ -33,7 +35,6 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 	top: 50%;
 	display: flex;
 	text-align: center;
-	color: white;
 	width:100%;
 	transform: translateY(-50%);
 }
@@ -61,7 +62,7 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
     justify-content: center;
 }
 .social-links a {
-    color: #aaa;
+    color: var(--iconColor);
     text-decoration: none;
     padding: 2.3rem 1.9rem;
     margin: 1.5rem;
@@ -73,9 +74,9 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 
 .social-links a:hover {
     transform: scale(0.9);
-    color: white;
+    color: var(--color);
     /* background: #6e2b2b; */
-    border: 2px solid white;
+    border: 2px solid var(--color);
 }
 .social-links i {
     margin: auto 1rem;

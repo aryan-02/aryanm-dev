@@ -5,6 +5,25 @@
     const rows=5;
     const cols=9;
 
+    let darkTheme = true;
+
+    const date = new Date();
+    let year =  date.getFullYear();
+
+    $: pageBackground = (darkTheme) ? "#2f3438" : "white";
+    $: pageTextColor = (darkTheme) ? "white" : "black";
+
+    $: bannerGradient = (darkTheme) ? "linear-gradient(315deg, #2b4162 0%, #12100e 74%)" : "linear-gradient(to right, #00b4db, #0083b0)";///"linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)";
+
+    $: arrowColor = (darkTheme) ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.2)";
+
+    $: socialIconColor = (darkTheme) ? "#eee" : "#222";
+
+    function toggleTheme()
+    {
+        darkTheme = !darkTheme;
+    }
+
     let mx = 0;
     let my = 0;
 
@@ -23,28 +42,42 @@
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:mousemove={handleMouseMove} />
 
 <main>
-    <div role="banner" class="homeBanner">
+    <div role="banner" class="homeBanner" style="background: {bannerGradient};">
         {#each Array(rows) as _, i}
             <div class="row">
                 {#each Array(cols) as _, j}
-				<span bind:this={arrows[i][j]} class="material-symbols-outlined arrow" style="transform: rotate({Math.atan2((my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2)), (mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)))}rad) scaleX({1 + Math.hypot(my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2), mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)) / 4000});">remove</span>
+				    <span bind:this={arrows[i][j]} class="material-symbols-outlined arrow" style="color: {arrowColor}; transform: rotate({Math.atan2((my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2)), (mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)))}rad) scaleX({1 + Math.hypot(my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2), mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)) / 4000});">remove</span>
                 {/each}
             </div>
         {/each}
     </div>
-	<BannerContent />
-	<Section color="white" bg="#2f3438">
+	<BannerContent color={pageTextColor} iconColor={socialIconColor} />
+    <div class="theme-toggle-container">
+        <button style="color: {pageTextColor}" class="material-symbols-outlined theme-toggle" on:click={toggleTheme}>
+            {#if darkTheme}
+            light_mode
+            {:else}
+                dark_mode
+            {/if}
+        </button>
+    </div>
+	<Section color="{pageTextColor}" bg="{pageBackground}">
         <div class="container">
             <div class="text-content" style="flex: 1;">
                 <h1>Hi! 👋</h1>
                 <p>I am a junior undergraduate student at the <strong><a href="https://uta.edu/" target="_blank">University of Texas at Arlington</a></strong>, where I major in <strong>Computer Science</strong>.</p>
+                <p>I currently work as a Teaching Assistant at UTA for <strong><a href="https://ranger.uta.edu/~alex/courses/3318/">CSE 3318: Algorithms and Data Structures</a></strong>.</p>
             </div>
         </div>
     </Section>
-    <Section color="white" bg="#2f3438">
+    <Section color="{pageTextColor}" bg="{pageBackground}">
         <h1>Projects 💻</h1>
-        <p></p>
+        <p>Coming soon!</p>
     </Section>
+    <footer style="padding: 2rem; text-align: center;">
+        <p>&copy; {year} Aryan Mediratta</p>
+        <p>Made with <i class="material-symbols-outlined">coffee</i> and <i class="material-symbols-outlined">code</i></p>
+    </footer>
 	
 </main>
 
@@ -52,7 +85,6 @@
 .homeBanner {
 	/* background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%); */
     background-color: #2b4162;
-    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
 
 	color: white;
 	width: 100%;
@@ -69,6 +101,33 @@
 	color: rgba(255, 255, 255, 0.2);
 	user-select: none;
 }
+
+.theme-toggle-container {
+    position: absolute;
+    bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.theme-toggle {
+    padding: 1rem;
+    font-size: 4rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle:active {
+    transform: rotate(45deg) scale(1.1);
+}
+
 .container {
     display: flex;
 }

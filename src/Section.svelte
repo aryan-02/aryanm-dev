@@ -1,6 +1,6 @@
-<script>
-    export let bg = "white";
-    export let color = "black"
+<script lang="ts">
+    export let bg : String = "white";
+    export let color : String = "black"
 </script>
 
 <section style="background-color: {bg}; color: {color}">
