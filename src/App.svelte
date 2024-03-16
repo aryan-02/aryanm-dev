@@ -1,7 +1,6 @@
 <script lang="ts">
     import BannerContent from "./BannerContent.svelte";
-
-    
+    import Section from './Section.svelte';   
 
     const rows=5;
     const cols=9;
@@ -34,13 +33,27 @@
         {/each}
     </div>
 	<BannerContent />
-	<h2>Hello World</h2>
+	<Section color="white" bg="#2f3438">
+        <div class="container">
+            <div class="text-content" style="flex: 1;">
+                <h1>Hi! 👋</h1>
+                <p>I am a junior undergraduate student at the <strong><a href="https://uta.edu/" target="_blank">University of Texas at Arlington</a></strong>, where I major in <strong>Computer Science</strong>.</p>
+            </div>
+        </div>
+    </Section>
+    <Section color="white" bg="#2f3438">
+        <h1>Projects 💻</h1>
+        <p></p>
+    </Section>
 	
 </main>
 
 <style>
 .homeBanner {
-	background: #262A33;
+	/* background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%); */
+    background-color: #2b4162;
+    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
+
 	color: white;
 	width: 100%;
 	height: 100vh;
@@ -56,4 +69,24 @@
 	color: rgba(255, 255, 255, 0.2);
 	user-select: none;
 }
+.container {
+    display: flex;
+}
+
+h1 {
+        font-size: 2.5em;
+        margin-bottom: 0.5rem;
+    }
+    strong {
+        border-bottom: 3px solid transparent;
+        transition: border 0.5s;
+    }
+    strong:hover {
+        border-bottom: 3px solid salmon;
+    }
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
 </style>

@@ -12,13 +12,16 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
         <h1>Aryan Mediratta</h1>
         <div class="social-links">
             <a href="https://linkedin.com/in/aryan-mediratta" target="_blank">
-                <i><Fa icon={faLinkedinIn} scale={3}/></i> <!--LinkedIn-->
+                <i><Fa icon={faLinkedinIn} scale={2.5}/></i> 
+                <!-- <div class="link-text">LinkedIn</div> -->
             </a>
             <a href="https://github.com/aryan-02" target="_blank">
-                <i><Fa icon={faGithub} scale={3} /></i><!--GitHub-->
+                <i><Fa icon={faGithub} scale={2.5} /></i> 
+                <!-- <div class="link-text">GitHub</div> -->
             </a>
             <a href="/aryanm-dev/resume.pdf">
-                <i><Fa icon={faFilePdf} scale={3} /></i><!--Résumé-->
+                <i><Fa icon={faFilePdf} scale={2.5} /></i>
+                <!-- <div class="link-text">Résumé</div> -->
             </a>
         </div>
     </div>
@@ -58,21 +61,24 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
     justify-content: center;
 }
 .social-links a {
-    color: white;
+    color: #aaa;
     text-decoration: none;
-    padding: 1.9rem;
+    padding: 2.3rem 1.9rem;
     margin: 1.5rem;
     /* border: 2px solid white; */
     border-radius: 5%;
     font-size: 1.5rem;
     transition: all 0.5s;
 }
+
 .social-links a:hover {
-    background: rgba(255, 255, 255, 0.6);;
-    color: black
+    transform: scale(0.9);
+    color: white;
+    /* background: #6e2b2b; */
+    border: 2px solid white;
 }
 .social-links i {
-    margin: 2rem;
+    margin: auto 1rem;
 }
 
 </style>
