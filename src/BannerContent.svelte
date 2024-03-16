@@ -73,7 +73,7 @@ export let iconColor = "#aaa";
 }
 
 .social-links a:hover {
-    transform: scale(0.9);
+    scale: 0.9;
     color: var(--color);
     /* background: #6e2b2b; */
     border: 2px solid var(--color);

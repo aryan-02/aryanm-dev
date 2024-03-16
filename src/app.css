@@ -7,3 +7,9 @@ body, html, h1 {
 	margin: 0;
 	padding: 0;
 }
+
+@media screen and (width < 490px) {
+	html {
+		font-size: 0.4rem;
+	}
+}
