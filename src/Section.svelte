@@ -7,15 +7,13 @@
     <slot>
         <div class="container">
             <div class="text-content">
-                <h1>Hi 👋</h1>
+                <h1>Heading 👋</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat debitis molestias mollitia temporibus ducimus aliquam amet vel ea et, animi illo consequatur, quasi aspernatur minima maiores excepturi cum quod repudiandae.</p>
             </div>
             
         </div>
     </slot>
 </section>
-
-
 
 <style>
 
@@ -27,17 +25,6 @@
     h1 {
         font-size: 2em;
         margin-bottom: 0.5rem;
-    }
-    strong {
-        border-bottom: 3px solid transparent;
-        transition: border 0.5s;
-    }
-    strong:hover {
-        border-bottom: 3px solid salmon;
-    }
-    a {
-        color: inherit;
-        text-decoration: inherit;
     }
 
 </style>

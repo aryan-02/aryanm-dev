@@ -1,11 +1,15 @@
 <script lang="ts">
     import BannerContent from "./BannerContent.svelte";
-    import Section from './Section.svelte';   
+    import ProjectCard from "./ProjectCard.svelte";
+    import Section from './Section.svelte'; 
+    import type {Project} from './types' 
+    import pathPlanner from './assets/pathplanner.gif' 
+    import {projects} from './projects'
 
-    const rows=5;
-    const cols=9;
+    const rows:number = 5;
+    const cols:number = 9;
 
-    let darkTheme = true;
+    let darkTheme:boolean = true;
 
     const date = new Date();
     let year =  date.getFullYear();
@@ -19,6 +23,8 @@
 
     $: socialIconColor = (darkTheme) ? "#eee" : "#222";
 
+    $: accentColor = (darkTheme) ? "salmon": "#26c9fc";
+
     function toggleTheme()
     {
         darkTheme = !darkTheme;
@@ -30,13 +36,16 @@
     let windowWidth = 0;
     let windowHeight = 0;
 
-	let arrows = Array(rows).fill().map(() => Array(cols).fill());
+	let arrows = Array(rows).fill(undefined).map(() => Array(cols).fill(undefined));
+    console.log(arrows);
 
     function handleMouseMove(event: any)
     {
         mx = event.clientX;
         my = event.clientY;
     }
+
+    
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:mousemove={handleMouseMove} />
@@ -66,13 +75,16 @@
             <div class="text-content" style="flex: 1;">
                 <h1>Hi! 👋</h1>
                 <p>I am a junior undergraduate student at the <strong><a href="https://uta.edu/" target="_blank">University of Texas at Arlington</a></strong>, where I major in <strong>Computer Science</strong>.</p>
-                <p>I currently work as a Teaching Assistant at UTA for <strong><a href="https://ranger.uta.edu/~alex/courses/3318/">CSE 3318: Algorithms and Data Structures</a></strong>.</p>
+                <p>I currently work as a Teaching Assistant at UTA for <strong><a href="https://ranger.uta.edu/~alex/courses/3318/" target="_blank">CSE 3318: Algorithms and Data Structures</a></strong>.</p>
             </div>
         </div>
     </Section>
     <Section color="{pageTextColor}" bg="{pageBackground}">
         <h1>Projects 💻</h1>
-        <p>Coming soon!</p>
+        <!-- <p>Coming soon!</p> -->
+        {#each projects as project}
+            <ProjectCard {project} {accentColor} background={pageBackground} textColor={pageTextColor}></ProjectCard>
+        {/each}
     </Section>
     <footer style="padding: 2rem; text-align: center;">
         <p>&copy; {year} Aryan Mediratta</p>
