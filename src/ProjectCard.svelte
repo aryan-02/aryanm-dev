@@ -17,7 +17,7 @@
         {/each}
     </p>
     {#if 'yt_embed' in project}
-        <iframe class="youtube-video" title="YouTube" src="https://www.youtube.com/embed/{project.yt_embed}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+        <iframe class="youtube-video" title="YouTube" src="https://www.youtube.com/embed/{project.yt_embed}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     {/if}
     {#if 'image' in project}
         <img src="{project.image}" alt="Project" style="max-width: 80%; height: auto;">
@@ -40,7 +40,7 @@
         color: var(--text-color);
         padding: 1rem 2rem;
         border-radius: 1rem;
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         font-size:1rem;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }

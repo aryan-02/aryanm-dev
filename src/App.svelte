@@ -1,11 +1,8 @@
 <script lang="ts">
     import BannerContent from "./BannerContent.svelte";
-    import ProjectCard from "./ProjectCard.svelte";
+    import ProjectGallery from "./ProjectGallery.svelte";
     import Section from './Section.svelte'; 
-    import type {Project} from './types' 
-    import pathPlanner from './assets/pathplanner.gif' 
-    import {projects} from './projects'
-
+    import pathPlanner from './assets/pathplanner.gif';
     const rows:number = 5;
     const cols:number = 9;
 
@@ -48,7 +45,7 @@
     
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:mousemove={handleMouseMove} />
+<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:mousemove={handleMouseMove}/>
 
 <main>
     <div role="banner" class="homeBanner" style="background: {bannerGradient};">
@@ -82,9 +79,7 @@
     <Section color="{pageTextColor}" bg="{pageBackground}">
         <h1>Projects 💻</h1>
         <!-- <p>Coming soon!</p> -->
-        {#each projects as project}
-            <ProjectCard {project} {accentColor} background={pageBackground} textColor={pageTextColor}></ProjectCard>
-        {/each}
+        <ProjectGallery {accentColor} {pageBackground} {pageTextColor}></ProjectGallery>
     </Section>
     <footer style="padding: 2rem; text-align: center;">
         <p>&copy; {year} Aryan Mediratta</p>
