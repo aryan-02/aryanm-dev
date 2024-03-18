@@ -25,10 +25,11 @@
 
 <style>
 #filterContainer :global(.svelte-tags-input-tag) {
-	background: var(--accent-color);
+	background: transparent;
+    border: 2px solid var(--accent-color);
     font-size: 1.3rem;
-    padding: 0 0.9rem;
-    border-radius: 1rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 1.2rem;
 }
 #filterContainer :global(.svelte-tags-input-layout) {
 	background: var(--page-background);
