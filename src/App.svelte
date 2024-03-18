@@ -52,7 +52,7 @@
         {#each Array(rows) as _, i}
             <div class="row">
                 {#each Array(cols) as _, j}
-				    <span bind:this={arrows[i][j]} class="material-symbols-outlined arrow" style="color: {arrowColor}; transform: rotate({Math.atan2((my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2)), (mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)))}rad) scaleX({1 + Math.hypot(my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2), mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)) / 4000});">remove</span>
+				    <span bind:this={arrows[i][j]} class="material-symbols-outlined arrow" style="color: {arrowColor}; transform: rotate({Math.atan2((my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2)), (mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2)))}rad) scaleX({1 + Math.min(2202,Math.hypot(my - (arrows[i][j] && arrows[i][j].getBoundingClientRect().top + arrows[i][j].getBoundingClientRect().height / 2), mx - (arrows[i][j] && arrows[i][j].getBoundingClientRect().left + arrows[i][j].getBoundingClientRect().width / 2))) / 4000});">remove</span>
                 {/each}
             </div>
         {/each}

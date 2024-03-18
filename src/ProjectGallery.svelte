@@ -30,6 +30,7 @@
     font-size: 1.3rem;
     padding: 0.3rem 0.9rem;
     border-radius: 1.2rem;
+    color: var(--text-color);
 }
 #filterContainer :global(.svelte-tags-input-layout) {
 	background: var(--page-background);
