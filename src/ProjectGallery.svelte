@@ -16,7 +16,6 @@
     <div id="filterContainer">
         <Tags bind:tags={tags} placeholder="Filter by tags" autoComplete={allTags} onlyAutocomplete={true} onlyUnique={true} />
     </div>
-    <p>{tags}</p>
     {#each projects as project}
         {#if tags.every(tag => project.tags.includes(tag))}
             <ProjectCard {project} {accentColor} background={pageBackground} textColor={pageTextColor}></ProjectCard>
