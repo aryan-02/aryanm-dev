@@ -2,8 +2,19 @@ import type{Project} from './types.ts'
 import pathPlanner from './assets/pathplanner.gif' 
 import hackUTA from './assets/hackuta.png'
 import tictactoe from './assets/tictactoe.png'
+import healthApp from './assets/healthapp.png'
+import byteClub from "./assets/byteclub.jpg"
+import lookOut from './assets/lookout.jpg'
 
-export const projects : Project[] = [{
+export const projects : Project[] = [
+{
+    title: "Game Playing Agent",
+    status: "Ongoing",
+    tags: ["AI", "Game Playing", "Deep Learning", "Reinforcement Learning"],
+    description: `Working on an AI game-playing engine that works with both Tic-tac-toe and Connect4. Implementing techniques similar
+    to the ones used bots for playing the game of Go, including Monte Carlo Tree Search, Deep Learning and Reinforcement Learning.`
+},
+{
     title: "Minimax GUI Tic-Tac-Toe",
     status: "Finished",
     image: tictactoe,
@@ -51,4 +62,47 @@ export const projects : Project[] = [{
     tags: ["Robotics", "Python", "OpenCV"],
     description: `In 2020, I decided to try a non-traditional approach to line-follower robots. Instead of using a pair of color sensors to detect the line, I decided to use a camera. This approach makes it roughly equivalent to using more than 2 million color sensors (each pixel being equivalent to a color sensor). Further, using basic calculus, I developed and coded a PID-controller-based line following algorithm, which makes the robot take smooth turns, unlike the abrupt turns a regular line follower robot takes.`
 },
+{
+    title: "HealthApp",
+    status: "Partial",
+    image: healthApp,
+    links: [{url: "https://github.com/aryan-02/HealthApp/", name: "GitHub"}],
+    tags: ["Android", "Gradle", "Java"],
+    description: `Worked on an Android application to keep track of users' vitals, medication and other health information with
+    smart reminders. Designed the UI/UX and implemented some core backend functionalities.`
+},
+{
+    title: "Memory Allocator",
+    status: "Finished",
+    links: [{url: "https://github.com/aryan-02/ArenaAllocator", name: "GitHub"}],
+    tags: ["OS", "C", "Linux", "UNIX", "Memory Allocator"],
+    description: `A custom memory allocator with a malloc/free-like interface implemented using a custom data structure
+    with an array of linked nodes.`
+},
+{
+    title: "Byte Club Website",
+    status: "Finished",
+    links: [{url: "https://web.archive.org/web/20210618154628/http://byteclub.in/", name: "Wayback Machine Link"}],
+    tags: ["Web Development", "HTML/CSS", "JavaScript", "SASS", "PHP", "CodeIgniter", "XML", "MySQL"],
+    image: byteClub,
+    description: `A website and event management system I developed for my high school's computing club. Built using CodeIgniter (a Model-View-Controller framework), the system handled invites to schools,
+    registration, and attendance, together with an administrator portal with a graphical interface for the event organizers.`
+},
+{
+    title: "Dense Neural Network from Scratch in C++",
+    status: "Finished",
+    links: [{url:"https://replit.com/@aryan02/perceptron%23main.cpp", name:"ReplIt Link"}, {url: "https://github.com/aryan-02/perceptron-cpp", name: "GitHub"}],
+    tags: ["Neural Network", "C++"],
+    description: "A Dense Neural Network implemented from scratch with a custom Matrix template library written in C++. Uses stochastic gradient descent to train weights. Trained on the XOR Dataset."
+},
+{
+    title: "LookOut",
+    status: "Finished",
+    image: lookOut,
+    links: [{url: "https://devpost.com/software/lookout-p8nsv3", name: "DevPost Link"}],
+    tags: ["Web Development", "NodeJS", "Express", "MongoDB", "HTML/CSS", "JavaScript", "PHP"],
+    description: `A crowdsourcing application developed during the COVID-19 lockdown, where users can rate the quality of various
+    parameters and standards in their area, providing direct feedback to Governments on how to handle the emergency situation of the pandemic.
+    Finished third at The Global Hack`
+}
 ]

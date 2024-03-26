@@ -6,7 +6,7 @@
     export let accentColor: string;
     export let pageBackground: string;
     export let pageTextColor: string;
-    const allTags:string[] = Array.from(new Set(projects.reduce((tagsList: string[], project:Project) => tagsList.concat(project.tags), [])));
+    const allTags:string[] = Array.from(new Set(projects.reduce((tagsList: string[], project:Project) => tagsList.concat(project.tags), []))).toSorted();
     console.log(allTags);
     console.log(typeof allTags);
     let tags:string[] = [];
