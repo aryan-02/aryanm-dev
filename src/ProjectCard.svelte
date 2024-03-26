@@ -13,7 +13,7 @@
     </div>
     <p class="tags">
         {#each project.tags as tag}
-            <span class="tag">{tag}</span>
+            <div class="tag">{tag}</div>
         {/each}
     </p>
     {#if 'yt_embed' in project}
@@ -62,6 +62,7 @@
         margin-bottom: 2rem;
     }
     .tag {
+        display: inline-block;
         font-size: 0.8rem;
         padding: 0.5rem;
         border-radius: 1rem;
