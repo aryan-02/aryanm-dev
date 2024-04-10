@@ -21,7 +21,7 @@ export let iconColor = "#aaa";
                 <i><Fa icon={faGithub} scale={2.5} /></i> 
                 <!-- <div class="link-text">GitHub</div> -->
             </a>
-            <a href="/aryanm-dev/resume.pdf" target="_blank">
+            <a href="/resume.pdf" target="_blank">
                 <i><Fa icon={faFilePdf} scale={2.5} /></i>
                 <!-- <div class="link-text">Résumé</div> -->
             </a>
